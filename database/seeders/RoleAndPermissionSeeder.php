@@ -74,12 +74,13 @@ class RoleAndPermissionSeeder extends Seeder
             $dashboardPermissions
         );
 
+        // Créer toutes les permissions avec le guard admin
         foreach ($allPermissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'web']);
+            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'admin']);
         }
 
         // Créer le rôle Super Admin avec toutes les permissions
-        $superAdmin = Role::firstOrCreate(['name' => 'Super Admin', 'guard_name' => 'web']);
+        $superAdmin = Role::firstOrCreate(['name' => 'Super Admin', 'guard_name' => 'admin']);
         $superAdmin->syncPermissions($allPermissions);
-    }
+        }
 }

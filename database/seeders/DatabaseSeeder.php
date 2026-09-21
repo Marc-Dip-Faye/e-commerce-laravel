@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleAndPermissionSeeder::class,
+            AdminUserSeeder::class, // ← Ajoute cette ligne
         ]);
     }
 }
